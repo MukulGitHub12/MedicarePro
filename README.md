@@ -5,7 +5,7 @@
 ## 📌 Project Overview
 
 MediCare Pro is a web-based healthcare system that allows patients to book doctor appointments, access medical records, and use telemedicine services online.
-
+( This is frontend and Script only, Backent is still to be deployed )
 ---
 
 ## 🚀 Features
