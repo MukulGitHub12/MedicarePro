@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediCare Pro — Smart Healthcare Platform</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="loader-content">
+      <div class="pulse-ring"></div>
+      <div class="heartbeat-icon"><i class="fas fa-heartbeat"></i></div>
+      <p>MediCare Pro</p>
+    </div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <div class="logo-icon"><i class="fas fa-heartbeat"></i></div>
+        <span class="logo-text">Medi<span class="accent">Care</span> Pro</span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#doctors" class="nav-link">Doctors</a></li>
+        <li><a href="#appointment" class="nav-link">Book Appointment</a></li>
+        <li><a href="#telemedicine" class="nav-link">Telemedicine</a></li>
+        <li><a href="#records" class="nav-link">Health Records</a></li>
+        <li><a href="#pharmacy" class="nav-link">Pharmacy</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-outline" onclick="openModal('loginModal')">Sign In</button>
+        <button class="btn-primary" onclick="openModal('registerModal')">Get Started</button>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="grid-overlay"></div>
+    </div>
+    <div class="hero-container">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>24/7 Healthcare Available</span>
+      </div>
+      <h1 class="hero-title">
+        Your Health,<br />
+        <span class="gradient-text">Our Priority</span>
+      </h1>
+      <p class="hero-subtitle">
+        Connect with top-rated doctors, book appointments instantly, access your medical records, and get prescriptions delivered — all in one intelligent platform.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-hero-primary" onclick="scrollToSection('appointment')">
+          <i class="fas fa-calendar-check"></i> Book Appointment
+        </button>
+        <button class="btn-hero-outline" onclick="scrollToSection('telemedicine')">
+          <i class="fas fa-video"></i> Start Video Consult
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num" data-target="500">0</span><span>+</span>
+          <span class="stat-label">Specialist Doctors</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="50000">0</span><span>+</span>
+          <span class="stat-label">Patients Served</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="98">0</span><span>%</span>
+          <span class="stat-label">Satisfaction Rate</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="30">0</span><span>+</span>
+          <span class="stat-label">Specialties</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="health-card floating">
+        <div class="card-header-visual">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Doctor" />
+          <div>
+            <strong>Dr. Sarah Mitchell</strong>
+            <span>Cardiologist</span>
+          </div>
+          <span class="online-badge">Online</span>
+        </div>
+        <div class="vitals">
+          <div class="vital-item">
+            <i class="fas fa-heartbeat"></i>
+            <span>72 bpm</span>
+            <small>Heart Rate</small>
+          </div>
+          <div class="vital-item">
+            <i class="fas fa-tint"></i>
+            <span>120/80</span>
+            <small>Blood Pressure</small>
+          </div>
+          <div class="vital-item">
+            <i class="fas fa-lungs"></i>
+            <span>98%</span>
+            <small>SpO2</small>
+          </div>
+        </div>
+      </div>
+      <div class="appointment-mini floating-delayed">
+        <div class="mini-header"><i class="fas fa-calendar-alt"></i> Next Appointment</div>
+        <div class="mini-body">
+          <strong>Dr. James Chen</strong>
+          <span>Today, 3:30 PM • Neurology</span>
+          <button class="mini-btn">Join Call</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">What We Offer</div>
+        <h2 class="section-title">Complete Healthcare <span class="gradient-text">Services</span></h2>
+        <p class="section-subtitle">Everything you need for your health, available at your fingertips</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card" data-aos>
+          <div class="service-icon teal"><i class="fas fa-calendar-check"></i></div>
+          <h3>Online Appointments</h3>
+          <p>Book appointments with specialists in seconds. Choose your preferred time slot and get confirmed instantly.</p>
+          <a href="#appointment" class="service-link">Book Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card featured" data-aos>
+          <div class="service-icon white"><i class="fas fa-video"></i></div>
+          <h3>Video Consultation</h3>
+          <p>HD video calls with certified doctors from the comfort of your home. Available 24/7 for urgent care.</p>
+          <a href="#telemedicine" class="service-link">Start Call <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card" data-aos>
+          <div class="service-icon blue"><i class="fas fa-file-medical"></i></div>
+          <h3>Digital Health Records</h3>
+          <p>Store, access, and share your complete medical history securely. HIPAA-compliant encryption.</p>
+          <a href="#records" class="service-link">View Records <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card" data-aos>
+          <div class="service-icon green"><i class="fas fa-prescription-bottle-alt"></i></div>
+          <h3>Online Pharmacy</h3>
+          <p>Order prescribed medications online. Fast delivery, genuine medicines, doorstep convenience.</p>
+          <a href="#pharmacy" class="service-link">Order Meds <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card" data-aos>
+          <div class="service-icon purple"><i class="fas fa-flask"></i></div>
+          <h3>Lab Tests & Reports</h3>
+          <p>Book diagnostic tests, get home sample collection, and receive digital reports within hours.</p>
+          <a href="#" class="service-link" onclick="openModal('labModal')">Book Test <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card" data-aos>
+          <div class="service-icon orange"><i class="fas fa-ambulance"></i></div>
+          <h3>Emergency Services</h3>
+          <p>One-tap emergency assistance with real-time ambulance tracking and hospital coordination.</p>
+          <a href="#" class="service-link" onclick="openModal('emergencyModal')">Emergency <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Doctors Section -->
+  <section id="doctors" class="doctors section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Our Team</div>
+        <h2 class="section-title">Meet Our <span class="gradient-text">Top Doctors</span></h2>
+        <p class="section-subtitle">Board-certified specialists with years of expertise</p>
+      </div>
+      <div class="doctor-filters">
+        <button class="filter-btn active" data-filter="all">All Specialties</button>
+        <button class="filter-btn" data-filter="cardiology">Cardiology</button>
+        <button class="filter-btn" data-filter="neurology">Neurology</button>
+        <button class="filter-btn" data-filter="orthopedic">Orthopedic</button>
+        <button class="filter-btn" data-filter="dermatology">Dermatology</button>
+        <button class="filter-btn" data-filter="pediatrics">Pediatrics</button>
+      </div>
+      <div class="doctors-grid" id="doctorsGrid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Appointment Section -->
+  <section id="appointment" class="appointment section">
+    <div class="container">
+      <div class="appt-wrapper">
+        <div class="appt-info">
+          <div class="section-tag">Book Appointment</div>
+          <h2 class="section-title">Schedule Your <span class="gradient-text">Visit</span></h2>
+          <p>Choose from in-person visits or virtual consultations. Our streamlined booking takes less than 2 minutes.</p>
+          <div class="appt-features">
+            <div class="appt-feature">
+              <div class="appt-feature-icon"><i class="fas fa-clock"></i></div>
+              <div>
+                <strong>Instant Confirmation</strong>
+                <span>Get confirmed in real-time</span>
+              </div>
+            </div>
+            <div class="appt-feature">
+              <div class="appt-feature-icon"><i class="fas fa-bell"></i></div>
+              <div>
+                <strong>Smart Reminders</strong>
+                <span>SMS & email alerts before your visit</span>
+              </div>
+            </div>
+            <div class="appt-feature">
+              <div class="appt-feature-icon"><i class="fas fa-sync"></i></div>
+              <div>
+                <strong>Easy Rescheduling</strong>
+                <span>Change or cancel anytime</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="appt-form-card">
+          <h3>Book an Appointment</h3>
+          <form id="appointmentForm" onsubmit="submitAppointment(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" placeholder="John" required />
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" placeholder="Doe" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="john@example.com" required />
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" placeholder="+1 (555) 000-0000" required />
+            </div>
+            <div class="form-group">
+              <label>Select Specialty</label>
+              <select required>
+                <option value="">Choose a specialty...</option>
+                <option>Cardiology</option>
+                <option>Neurology</option>
+                <option>Orthopedics</option>
+                <option>Dermatology</option>
+                <option>Pediatrics</option>
+                <option>General Medicine</option>
+                <option>Gynecology</option>
+                <option>Oncology</option>
+                <option>Psychiatry</option>
+                <option>ENT</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Preferred Date</label>
+                <input type="date" required />
+              </div>
+              <div class="form-group">
+                <label>Preferred Time</label>
+                <select required>
+                  <option value="">Select time...</option>
+                  <option>9:00 AM</option>
+                  <option>10:00 AM</option>
+                  <option>11:00 AM</option>
+                  <option>12:00 PM</option>
+                  <option>2:00 PM</option>
+                  <option>3:00 PM</option>
+                  <option>4:00 PM</option>
+                  <option>5:00 PM</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Appointment Type</label>
+              <div class="appt-type-btns">
+                <label class="type-btn">
+                  <input type="radio" name="apptType" value="in-person" checked />
+                  <span><i class="fas fa-hospital"></i> In-Person</span>
+                </label>
+                <label class="type-btn">
+                  <input type="radio" name="apptType" value="video" />
+                  <span><i class="fas fa-video"></i> Video Call</span>
+                </label>
+                <label class="type-btn">
+                  <input type="radio" name="apptType" value="phone" />
+                  <span><i class="fas fa-phone"></i> Phone</span>
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Describe Symptoms (Optional)</label>
+              <textarea placeholder="Brief description of your symptoms or reason for visit..." rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn-form-submit">
+              <i class="fas fa-calendar-check"></i> Confirm Appointment
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Telemedicine Section -->
+  <section id="telemedicine" class="telemedicine section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Virtual Care</div>
+        <h2 class="section-title">Telemedicine <span class="gradient-text">Consultation</span></h2>
+        <p class="section-subtitle">Connect with doctors face-to-face from anywhere</p>
+      </div>
+      <div class="tele-wrapper">
+        <div class="video-console">
+          <div class="video-screen" id="videoScreen">
+            <div class="video-placeholder">
+              <div class="video-avatar">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Doctor" />
+              </div>
+              <div class="video-info">
+                <strong>Dr. James Chen</strong>
+                <span>Neurologist · Available Now</span>
+              </div>
+              <div class="call-status" id="callStatus">Ready to connect</div>
+            </div>
+          </div>
+          <div class="video-controls">
+            <button class="ctrl-btn" id="micBtn" onclick="toggleMic()"><i class="fas fa-microphone"></i></button>
+            <button class="ctrl-btn call-btn" id="callBtn" onclick="toggleCall()"><i class="fas fa-video"></i></button>
+            <button class="ctrl-btn" id="speakerBtn" onclick="toggleSpeaker()"><i class="fas fa-volume-up"></i></button>
+            <button class="ctrl-btn" onclick="openModal('chatModal')"><i class="fas fa-comment-dots"></i></button>
+          </div>
+          <div class="video-timer" id="videoTimer" style="display:none">00:00</div>
+        </div>
+        <div class="tele-info">
+          <h3>How It Works</h3>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">01</div>
+              <div class="step-content">
+                <strong>Choose Your Doctor</strong>
+                <p>Browse specialists and pick a doctor based on specialty, ratings, and availability.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">02</div>
+              <div class="step-content">
+                <strong>Schedule or Instant Call</strong>
+                <p>Book a future slot or start an immediate consultation if the doctor is available.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">03</div>
+              <div class="step-content">
+                <strong>Consult via HD Video</strong>
+                <p>Join your secure, encrypted video session — share documents and vitals in real-time.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">04</div>
+              <div class="step-content">
+                <strong>Receive Digital Prescription</strong>
+                <p>Get a digitally signed prescription and follow-up care plan instantly after your session.</p>
+              </div>
+            </div>
+          </div>
+          <button class="btn-primary" onclick="openModal('teleModal')">
+            <i class="fas fa-video"></i> Start Consultation
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Health Records Section -->
+  <section id="records" class="records section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Digital Records</div>
+        <h2 class="section-title">Your Health <span class="gradient-text">Dashboard</span></h2>
+        <p class="section-subtitle">All your medical information in one secure place</p>
+      </div>
+      <div class="records-wrapper">
+        <div class="records-sidebar">
+          <div class="patient-profile">
+            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Patient" />
+            <div>
+              <strong>John Anderson</strong>
+              <span>Patient ID: #MC-0042891</span>
+            </div>
+          </div>
+          <nav class="records-nav">
+            <button class="rec-nav-btn active" data-tab="overview"><i class="fas fa-chart-line"></i> Overview</button>
+            <button class="rec-nav-btn" data-tab="history"><i class="fas fa-history"></i> Visit History</button>
+            <button class="rec-nav-btn" data-tab="prescriptions"><i class="fas fa-pills"></i> Prescriptions</button>
+            <button class="rec-nav-btn" data-tab="reports"><i class="fas fa-file-medical-alt"></i> Lab Reports</button>
+            <button class="rec-nav-btn" data-tab="vitals"><i class="fas fa-heartbeat"></i> Vitals Log</button>
+          </nav>
+        </div>
+        <div class="records-content">
+          <div class="rec-tab active" id="tab-overview">
+            <div class="vitals-grid">
+              <div class="vital-card">
+                <div class="vital-icon"><i class="fas fa-heartbeat"></i></div>
+                <div class="vital-val">72 <small>bpm</small></div>
+                <div class="vital-name">Heart Rate</div>
+                <div class="vital-trend up"><i class="fas fa-arrow-up"></i> Normal</div>
+              </div>
+              <div class="vital-card">
+                <div class="vital-icon blood"><i class="fas fa-tint"></i></div>
+                <div class="vital-val">120/80 <small>mmHg</small></div>
+                <div class="vital-name">Blood Pressure</div>
+                <div class="vital-trend good"><i class="fas fa-check"></i> Optimal</div>
+              </div>
+              <div class="vital-card">
+                <div class="vital-icon temp"><i class="fas fa-thermometer-half"></i></div>
+                <div class="vital-val">98.6 <small>°F</small></div>
+                <div class="vital-name">Temperature</div>
+                <div class="vital-trend good"><i class="fas fa-check"></i> Normal</div>
+              </div>
+              <div class="vital-card">
+                <div class="vital-icon weight"><i class="fas fa-weight"></i></div>
+                <div class="vital-val">75 <small>kg</small></div>
+                <div class="vital-name">Weight</div>
+                <div class="vital-trend down"><i class="fas fa-arrow-down"></i> -2kg this month</div>
+              </div>
+            </div>
+            <div class="recent-activities">
+              <h4>Recent Activity</h4>
+              <div class="activity-list" id="activityList">
+                <div class="activity-item">
+                  <div class="act-icon appt"><i class="fas fa-stethoscope"></i></div>
+                  <div class="act-info"><strong>Cardiology Checkup</strong><span>Dr. Sarah Mitchell · Apr 20, 2026</span></div>
+                  <span class="act-badge completed">Completed</span>
+                </div>
+                <div class="activity-item">
+                  <div class="act-icon lab"><i class="fas fa-flask"></i></div>
+                  <div class="act-info"><strong>Blood Panel Report</strong><span>Lab Results Available · Apr 18, 2026</span></div>
+                  <span class="act-badge available">Available</span>
+                </div>
+                <div class="activity-item">
+                  <div class="act-icon rx"><i class="fas fa-pills"></i></div>
+                  <div class="act-info"><strong>Prescription Refill</strong><span>Metformin 500mg · Apr 15, 2026</span></div>
+                  <span class="act-badge delivered">Delivered</span>
+                </div>
+                <div class="activity-item">
+                  <div class="act-icon upcoming"><i class="fas fa-calendar"></i></div>
+                  <div class="act-info"><strong>Neurology Follow-up</strong><span>Dr. James Chen · Apr 30, 2026</span></div>
+                  <span class="act-badge upcoming">Upcoming</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rec-tab" id="tab-history">
+            <div class="history-table-wrap">
+              <h4>Visit History</h4>
+              <table class="records-table">
+                <thead>
+                  <tr><th>Date</th><th>Doctor</th><th>Specialty</th><th>Type</th><th>Status</th><th>Action</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Apr 20, 2026</td><td>Dr. Sarah Mitchell</td><td>Cardiology</td><td>In-Person</td><td><span class="badge-status completed">Done</span></td><td><button class="btn-xs">View Notes</button></td></tr>
+                  <tr><td>Apr 10, 2026</td><td>Dr. James Chen</td><td>Neurology</td><td>Video Call</td><td><span class="badge-status completed">Done</span></td><td><button class="btn-xs">View Notes</button></td></tr>
+                  <tr><td>Mar 28, 2026</td><td>Dr. Priya Sharma</td><td>Dermatology</td><td>In-Person</td><td><span class="badge-status completed">Done</span></td><td><button class="btn-xs">View Notes</button></td></tr>
+                  <tr><td>Mar 15, 2026</td><td>Dr. Mark Davis</td><td>Orthopedics</td><td>In-Person</td><td><span class="badge-status completed">Done</span></td><td><button class="btn-xs">View Notes</button></td></tr>
+                  <tr><td>Apr 30, 2026</td><td>Dr. James Chen</td><td>Neurology</td><td>Video Call</td><td><span class="badge-status upcoming">Upcoming</span></td><td><button class="btn-xs">Reschedule</button></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="rec-tab" id="tab-prescriptions">
+            <h4>Active Prescriptions</h4>
+            <div class="rx-list">
+              <div class="rx-card">
+                <div class="rx-icon"><i class="fas fa-pills"></i></div>
+                <div class="rx-info">
+                  <strong>Metformin 500mg</strong>
+                  <span>Twice daily after meals</span>
+                  <small>Prescribed by Dr. Sarah Mitchell · Expires Jun 20, 2026</small>
+                </div>
+                <div class="rx-actions">
+                  <button class="btn-xs" onclick="openModal('pharmacyModal')">Refill</button>
+                  <button class="btn-xs outline">Download</button>
+                </div>
+              </div>
+              <div class="rx-card">
+                <div class="rx-icon"><i class="fas fa-capsules"></i></div>
+                <div class="rx-info">
+                  <strong>Atorvastatin 10mg</strong>
+                  <span>Once daily at bedtime</span>
+                  <small>Prescribed by Dr. Sarah Mitchell · Expires Jun 20, 2026</small>
+                </div>
+                <div class="rx-actions">
+                  <button class="btn-xs" onclick="openModal('pharmacyModal')">Refill</button>
+                  <button class="btn-xs outline">Download</button>
+                </div>
+              </div>
+              <div class="rx-card">
+                <div class="rx-icon"><i class="fas fa-tablets"></i></div>
+                <div class="rx-info">
+                  <strong>Vitamin D3 2000 IU</strong>
+                  <span>Once daily with food</span>
+                  <small>Prescribed by Dr. James Chen · Expires Sep 10, 2026</small>
+                </div>
+                <div class="rx-actions">
+                  <button class="btn-xs" onclick="openModal('pharmacyModal')">Refill</button>
+                  <button class="btn-xs outline">Download</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rec-tab" id="tab-reports">
+            <h4>Lab Reports</h4>
+            <div class="reports-list">
+              <div class="report-item">
+                <div class="rep-icon"><i class="fas fa-file-medical-alt"></i></div>
+                <div class="rep-info"><strong>Complete Blood Count (CBC)</strong><span>Apr 18, 2026 · Accutest Labs</span></div>
+                <div class="rep-status normal">Normal</div>
+                <button class="btn-xs">View PDF</button>
+              </div>
+              <div class="report-item">
+                <div class="rep-icon"><i class="fas fa-file-medical-alt"></i></div>
+                <div class="rep-info"><strong>Lipid Panel</strong><span>Apr 18, 2026 · Accutest Labs</span></div>
+                <div class="rep-status attention">Needs Attention</div>
+                <button class="btn-xs">View PDF</button>
+              </div>
+              <div class="report-item">
+                <div class="rep-icon"><i class="fas fa-file-medical-alt"></i></div>
+                <div class="rep-info"><strong>HbA1c (Diabetes)</strong><span>Mar 10, 2026 · PathCare Labs</span></div>
+                <div class="rep-status normal">Normal</div>
+                <button class="btn-xs">View PDF</button>
+              </div>
+              <div class="report-item">
+                <div class="rep-icon"><i class="fas fa-x-ray"></i></div>
+                <div class="rep-info"><strong>Chest X-Ray</strong><span>Feb 22, 2026 · City Diagnostics</span></div>
+                <div class="rep-status normal">Normal</div>
+                <button class="btn-xs">View Image</button>
+              </div>
+            </div>
+          </div>
+          <div class="rec-tab" id="tab-vitals">
+            <h4>Vitals Log (Last 7 Entries)</h4>
+            <table class="records-table">
+              <thead>
+                <tr><th>Date</th><th>HR (bpm)</th><th>BP</th><th>Temp (°F)</th><th>SpO2</th><th>Weight</th></tr>
+              </thead>
+              <tbody id="vitalsTableBody"></tbody>
+            </table>
+            <button class="btn-primary mt-20" onclick="openModal('addVitalModal')"><i class="fas fa-plus"></i> Log Today's Vitals</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pharmacy Section -->
+  <section id="pharmacy" class="pharmacy section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Online Pharmacy</div>
+        <h2 class="section-title">Order <span class="gradient-text">Medicines</span> Online</h2>
+        <p class="section-subtitle">Authentic medicines delivered to your doorstep in 2-4 hours</p>
+      </div>
+      <div class="pharmacy-search">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="pharmSearch" placeholder="Search medicines, vitamins, supplements..." oninput="filterMeds()" />
+        </div>
+        <div class="pharm-filters">
+          <button class="filter-btn active" data-pfilter="all">All</button>
+          <button class="filter-btn" data-pfilter="prescription">Prescription</button>
+          <button class="filter-btn" data-pfilter="otc">OTC</button>
+          <button class="filter-btn" data-pfilter="vitamins">Vitamins</button>
+          <button class="filter-btn" data-pfilter="devices">Devices</button>
+        </div>
+      </div>
+      <div class="meds-grid" id="medsGrid">
+        <!-- Populated by JS -->
+      </div>
+      <div class="cart-widget" id="cartWidget">
+        <div class="cart-header">
+          <i class="fas fa-shopping-cart"></i>
+          <span>Cart (<span id="cartCount">0</span> items)</span>
+          <span class="cart-total">₹<span id="cartTotal">0</span></span>
+          <button class="btn-primary btn-sm" onclick="openModal('cartModal')">Checkout</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Get in Touch</div>
+        <h2 class="section-title">Contact <span class="gradient-text">Us</span></h2>
+        <p class="section-subtitle">We're here to help, 24 hours a day, 7 days a week</p>
+      </div>
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <div class="contact-card">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <strong>Our Address</strong>
+              <span>123 Medical Center Blvd, Health City, HC 10001</span>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+            <div>
+              <strong>Phone Number</strong>
+              <span>+1 (800) MEDI-CARE · Emergency: 911</span>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <strong>Email Address</strong>
+              <span>support@medicarepro.com</span>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <strong>Working Hours</strong>
+              <span>Mon-Fri: 8AM-8PM · Sat-Sun: 9AM-5PM</span>
+            </div>
+          </div>
+          <div class="emergency-bar">
+            <i class="fas fa-ambulance"></i>
+            <div>
+              <strong>Emergency 24/7</strong>
+              <span>Call: 1-800-911-MEDI for urgent care</span>
+            </div>
+            <button class="btn-emergency" onclick="openModal('emergencyModal')">Call Now</button>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="submitContact(event)">
+          <h3>Send Us a Message</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" placeholder="John Doe" required />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="john@example.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <select>
+              <option>General Inquiry</option>
+              <option>Appointment Help</option>
+              <option>Technical Support</option>
+              <option>Billing & Insurance</option>
+              <option>Medical Records</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea rows="5" placeholder="How can we help you?" required></textarea>
+          </div>
+          <button type="submit" class="btn-form-submit">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-icon"><i class="fas fa-heartbeat"></i></div>
+            <span class="logo-text">Medi<span class="accent">Care</span> Pro</span>
+          </div>
+          <p>Transforming healthcare through technology. Connecting patients with the best doctors for better health outcomes.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#doctors">Find a Doctor</a></li>
+            <li><a href="#appointment">Book Appointment</a></li>
+            <li><a href="#telemedicine">Telemedicine</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Patient Services</h4>
+          <ul>
+            <li><a href="#records">Health Records</a></li>
+            <li><a href="#pharmacy">Online Pharmacy</a></li>
+            <li><a href="#">Lab Tests</a></li>
+            <li><a href="#">Insurance Claims</a></li>
+            <li><a href="#">Health Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Health Newsletter</h4>
+          <p>Get weekly health tips and updates from our doctors.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Enter your email" />
+            <button class="btn-primary btn-sm">Subscribe</button>
+          </div>
+          <div class="app-badges">
+            <button class="app-badge"><i class="fab fa-apple"></i> App Store</button>
+            <button class="app-badge"><i class="fab fa-google-play"></i> Google Play</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 MediCare Pro. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">HIPAA Compliance</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <div class="toast-icon"><i class="fas fa-check-circle"></i></div>
+    <div class="toast-msg" id="toastMsg"></div>
+  </div>
+
+  <!-- ===== MODALS ===== -->
+  <!-- Login Modal -->
+  <div class="modal-overlay" id="loginModal" onclick="closeModalOnBg(event, 'loginModal')">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('loginModal')"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <div class="modal-logo"><i class="fas fa-heartbeat"></i></div>
+        <h2>Welcome Back</h2>
+        <p>Sign in to your MediCare Pro account</p>
+      </div>
+      <form onsubmit="handleLogin(event)">
+        <div class="form-group"><label>Email</label><input type="email" placeholder="john@example.com" required /></div>
+        <div class="form-group"><label>Password</label><input type="password" placeholder="••••••••" required />
+          <a href="#" class="forgot-link">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn-form-submit">Sign In</button>
+        <p class="modal-switch">Don't have an account? <a onclick="switchModal('loginModal','registerModal')">Register</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Register Modal -->
+  <div class="modal-overlay" id="registerModal" onclick="closeModalOnBg(event, 'registerModal')">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('registerModal')"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <div class="modal-logo"><i class="fas fa-user-plus"></i></div>
+        <h2>Create Account</h2>
+        <p>Join MediCare Pro for smarter healthcare</p>
+      </div>
+      <form onsubmit="handleRegister(event)">
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" placeholder="John" required /></div>
+          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Doe" required /></div>
+        </div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="john@example.com" required /></div>
+        <div class="form-group"><label>Password</label><input type="password" placeholder="Min 8 characters" required /></div>
+        <div class="form-group">
+          <label>Account Type</label>
+          <select>
+            <option>Patient</option>
+            <option>Doctor</option>
+            <option>Caregiver</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-form-submit">Create Account</button>
+        <p class="modal-switch">Already have an account? <a onclick="switchModal('registerModal','loginModal')">Sign In</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Emergency Modal -->
+  <div class="modal-overlay" id="emergencyModal" onclick="closeModalOnBg(event, 'emergencyModal')">
+    <div class="modal emergency-modal">
+      <button class="modal-close" onclick="closeModal('emergencyModal')"><i class="fas fa-times"></i></button>
+      <div class="emergency-header">
+        <div class="emergency-icon"><i class="fas fa-ambulance"></i></div>
+        <h2>Emergency Services</h2>
+        <p>Get immediate medical assistance</p>
+      </div>
+      <div class="emergency-options">
+        <button class="emerg-btn red" onclick="showToast('🚑 Ambulance dispatched! ETA: 8 minutes')">
+          <i class="fas fa-ambulance"></i>
+          <strong>Request Ambulance</strong>
+          <span>Nearest unit dispatched</span>
+        </button>
+        <button class="emerg-btn orange" onclick="showToast('📞 Connecting to emergency doctor...')">
+          <i class="fas fa-user-md"></i>
+          <strong>Emergency Doctor</strong>
+          <span>Immediate video call</span>
+        </button>
+        <button class="emerg-btn blue" onclick="showToast('🏥 Hospital contacted. They're ready.')">
+          <i class="fas fa-hospital"></i>
+          <strong>ER Admission</strong>
+          <span>Pre-register for ER</span>
+        </button>
+      </div>
+      <div class="emergency-note">
+        <i class="fas fa-exclamation-triangle"></i>
+        For life-threatening emergencies, call <strong>911</strong> immediately.
+      </div>
+    </div>
+  </div>
+
+  <!-- Doctor Detail Modal -->
+  <div class="modal-overlay" id="doctorModal" onclick="closeModalOnBg(event, 'doctorModal')">
+    <div class="modal doctor-modal" id="doctorModalContent">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
+  <!-- Chat Modal -->
+  <div class="modal-overlay" id="chatModal" onclick="closeModalOnBg(event, 'chatModal')">
+    <div class="modal chat-modal">
+      <button class="modal-close" onclick="closeModal('chatModal')"><i class="fas fa-times"></i></button>
+      <div class="chat-header-modal">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Doctor" />
+        <div><strong>Dr. James Chen</strong><span class="online-dot"></span><span>Online</span></div>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg received">Hello! How can I help you today?</div>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="handleChat(event)" />
+        <button onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lab Modal -->
+  <div class="modal-overlay" id="labModal" onclick="closeModalOnBg(event, 'labModal')">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('labModal')"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <div class="modal-logo"><i class="fas fa-flask"></i></div>
+        <h2>Book Lab Test</h2>
+        <p>Home sample collection available</p>
+      </div>
+      <form onsubmit="submitLab(event)">
+        <div class="form-group"><label>Test Type</label>
+          <select><option>Complete Blood Count</option><option>Lipid Panel</option><option>HbA1c</option><option>Thyroid Panel</option><option>Liver Function</option><option>Urine Analysis</option></select>
+        </div>
+        <div class="form-group"><label>Collection Method</label>
+          <select><option>Home Collection</option><option>Walk-in Lab</option></select>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Date</label><input type="date" required /></div>
+          <div class="form-group"><label>Time Slot</label><select><option>7-9 AM</option><option>9-11 AM</option><option>2-4 PM</option></select></div>
+        </div>
+        <div class="form-group"><label>Address (for home collection)</label><input type="text" placeholder="Your full address" /></div>
+        <button type="submit" class="btn-form-submit"><i class="fas fa-flask"></i> Confirm Booking</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Pharmacy Cart Modal -->
+  <div class="modal-overlay" id="cartModal" onclick="closeModalOnBg(event, 'cartModal')">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('cartModal')"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <div class="modal-logo"><i class="fas fa-shopping-cart"></i></div>
+        <h2>Your Cart</h2>
+      </div>
+      <div id="cartItemsDisplay"></div>
+      <div class="cart-total-display">
+        Total: <strong>₹<span id="cartTotalModal">0</span></strong>
+      </div>
+      <button class="btn-form-submit" onclick="placeOrder()"><i class="fas fa-truck"></i> Place Order (Express Delivery)</button>
+    </div>
+  </div>
+
+  <!-- Add Vital Modal -->
+  <div class="modal-overlay" id="addVitalModal" onclick="closeModalOnBg(event, 'addVitalModal')">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('addVitalModal')"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <div class="modal-logo"><i class="fas fa-heartbeat"></i></div>
+        <h2>Log Vitals</h2>
+        <p>Add today's health readings</p>
+      </div>
+      <form onsubmit="addVital(event)">
+        <div class="form-row">
+          <div class="form-group"><label>Heart Rate (bpm)</label><input type="number" id="vHR" placeholder="72" /></div>
+          <div class="form-group"><label>Blood Pressure</label><input type="text" id="vBP" placeholder="120/80" /></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Temperature (°F)</label><input type="number" id="vTemp" placeholder="98.6" step="0.1" /></div>
+          <div class="form-group"><label>SpO2 (%)</label><input type="number" id="vSpo2" placeholder="98" /></div>
+        </div>
+        <div class="form-group"><label>Weight (kg)</label><input type="number" id="vWeight" placeholder="75" /></div>
+        <button type="submit" class="btn-form-submit"><i class="fas fa-save"></i> Save Vitals</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Tele Modal -->
+  <div class="modal-overlay" id="teleModal" onclick="closeModalOnBg(event, 'teleModal')">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('teleModal')"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <div class="modal-logo"><i class="fas fa-video"></i></div>
+        <h2>Start Consultation</h2>
+        <p>Available doctors right now</p>
+      </div>
+      <div class="online-doctors-list" id="onlineDoctorsList"></div>
+    </div>
+  </div>
+
+  <!-- Pharmacy Modal -->
+  <div class="modal-overlay" id="pharmacyModal" onclick="closeModalOnBg(event, 'pharmacyModal')">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('pharmacyModal')"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <div class="modal-logo"><i class="fas fa-prescription-bottle-alt"></i></div>
+        <h2>Prescription Refill</h2>
+      </div>
+      <form onsubmit="submitRefill(event)">
+        <div class="form-group"><label>Prescription ID</label><input type="text" value="RX-20260420-001" readonly /></div>
+        <div class="form-group"><label>Quantity</label><select><option>30 days supply</option><option>60 days supply</option><option>90 days supply</option></select></div>
+        <div class="form-group"><label>Delivery Address</label><textarea rows="2" placeholder="Your delivery address"></textarea></div>
+        <button type="submit" class="btn-form-submit"><i class="fas fa-truck"></i> Submit Refill Request</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
